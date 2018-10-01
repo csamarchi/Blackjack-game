@@ -4,11 +4,43 @@ html {
   height: 100%;
 }
 
+body{
+  padding:20px 20px;
+  margin: 0px;
+}
+
 .wood {
-  position: fixed;
+  position: absolute;
   bottom: 0%;
-  left: 0px;
-  width: 100%;
+  left: -20px;
+  width: 110%;
   height: 75px;
   margin: auto;
+}
+
+.container {
+  position: relative;
+  left: 0px;
+  right: 0px;
+  top: 540px;
+  padding-bottom: 70px;
+  padding-top: 0;
+  text-align: center;
+}
+
+.btn {
+    font-family: "Georgia", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 2px;
+    position: relative;
+    bottom: 0px;
+    background-color: grey;
+    border-radius: 6px;
+    border-color: black;
+}
+
+.deck {
+  margin: 0px;
 }

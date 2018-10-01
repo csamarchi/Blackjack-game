@@ -11,7 +11,7 @@ class Deck {
   //This constructor provides default values for the suits and values properties and an empty array value for cards
   constructor() {
     this.suits = ['spades', 'hearts', 'clubs', 'diamonds'];
-    this.values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+    this.values = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
     this.cards = []
   }
 
@@ -19,7 +19,9 @@ class Deck {
   createDeck() {
     for (let i = 0; i < this.suits.length; i++) {
       for (let x = 0; x < this.values.length; x++) {
-        this.cards.push(new Card(this.values[x], this.suits[i]))
+
+        let fileName =  'css/cards/' + this.values[x] + '-' + this.suits[i] + '.jpg';
+        this.cards.push(new Card(this.values[x], this.suits[i], fileName))
       }
     }
   }
@@ -30,21 +32,37 @@ class Deck {
       let location1 = Math.floor((Math.random() * this.cards.length));
       let location2 = Math.floor((Math.random() * this.cards.length));
       let tmp = this.cards[location1];
-
       this.cards[location1] = this.cards[location2];
       this.cards[location2] = tmp;
     }
   }
-  
+
+//Method to print images
+  imgElement() {
+    for (let i = 0; i < this.cards.length; i++) {
+        let image = document.createElement('img')
+        image.src = this.cards[i].fileName;
+        image.style.height = '120px'
+        image.style.width = '100px'
+        console.log(image);
+        $('.deck').append(image);
+    }
+  }
+
 }
+
+
+//$(.deck).append(card.fileName);
 
 //Card Class
 class Card {
   //Creates a Card Object
   //Constructor that requires a value and suit to create a Card Object
-  constructor(value, suit) {
+  constructor(value, suit, fileName) {
     this.value = value
     this.suit = suit
+    this.fileName = fileName
+    //this.fileName = fileName
   }
 }
 
@@ -52,6 +70,14 @@ class Card {
 let deck = new Deck()
 deck.createDeck()
 deck.shuffleCards()
+deck.imgElement()
 
-//Print cards to console for sanity check
+//Log cards to console
 console.log(deck.cards)
+
+
+
+
+
+
+// let fileNameString = value + "of" + suit + ".svg"
