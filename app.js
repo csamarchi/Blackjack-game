@@ -19,8 +19,7 @@ class Deck {
   createDeck() {
     for (let i = 0; i < this.suits.length; i++) {
       for (let x = 0; x < this.values.length; x++) {
-
-        let fileName =  'css/cards/' + this.values[x] + '-' + this.suits[i] + '.jpg';
+        let fileName = 'css/cards/' + this.values[x] + '-' + this.suits[i] + '.jpg';
         this.cards.push(new Card(this.values[x], this.suits[i], fileName))
       }
     }
@@ -37,22 +36,19 @@ class Deck {
     }
   }
 
-//Method to print images
+  //Method to display images
   imgElement() {
     for (let i = 0; i < this.cards.length; i++) {
-        let image = document.createElement('img')
-        image.src = this.cards[i].fileName;
-        image.style.height = '120px'
-        image.style.width = '100px'
-        console.log(image);
-        $('.deck').append(image);
+      let image = document.createElement('img')
+      image.src = this.cards[i].fileName;
+      image.style.height = '120px'
+      image.style.width = '100px'
+      console.log(image);
+      $('.deck').append(image);
     }
   }
-
 }
 
-
-//$(.deck).append(card.fileName);
 
 //Card Class
 class Card {
@@ -74,10 +70,3 @@ deck.imgElement()
 
 //Log cards to console
 console.log(deck.cards)
-
-
-
-
-
-
-// let fileNameString = value + "of" + suit + ".svg"
