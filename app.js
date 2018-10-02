@@ -68,6 +68,8 @@ class Card {
   }
 }
 
+
+
 //Player Class
 class Player {
   constructor() {
@@ -75,7 +77,7 @@ class Player {
   }
 
   addCardToHand(card) {
-    this.cards.push(card)
+    this.hand.addCard(card)
   }
 }
 
@@ -86,7 +88,7 @@ class Dealer {
   }
 
   addCardToHand(card) {
-    this.cards.push(card)
+    this.hand.addCard(card)
   }
 }
 
@@ -96,7 +98,7 @@ class Hand {
     this.cards = []
   }
 
-  addCardToHand(card) {
+  addCard(card) {
     this.cards.push(card)
   }
 }
@@ -110,8 +112,8 @@ class Game {
   }
 
   startGame() {
-    createAndShuffleDeck()
-    dealCards()
+    this.createAndShuffleDeck()
+    this.dealCards()
   }
 
   createAndShuffleDeck() {
@@ -121,15 +123,18 @@ class Game {
 
   dealCards() {
     let cards = this.deck.cards
-    cards.pop(card1)
+    for (let i = 0; i < 2; i++) {
+      let card1 = cards.pop()
+      let card2 = cards.pop()
+      this.player.addCardToHand(card1)
+      this.dealer.addCardToHand(card2)
+    }
+    console.log(this.player.hand.cards);
+    console.log(this.dealer.hand.cards);
+    console.log(this.deck.cards);
     console.log(cards);
-    cards.pop(card2)
-    this.player.addCardToHand(card1)
-    this.dealer.addCardToHand(card2)
   }
 }
-
-
 
 
 
@@ -140,10 +145,12 @@ deck.createDeck()
 deck.shuffleCards()
 deck.imgElement()
 
+
+
 //Call new game
 let game = new Game()
 game.startGame()
 
 
 //Log cards to console
-console.log(deck.cards)
+//console.log(deck.cards)
