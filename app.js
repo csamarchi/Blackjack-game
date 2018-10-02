@@ -62,6 +62,7 @@ class Card {
   }
 }
 
+
 //Call new deck and create the cards
 let deck = new Deck()
 deck.createDeck()
