@@ -5,6 +5,8 @@
 //
 //
 
+
+
 //Deck Class
 class Deck {
   //Creates a Deck Object
@@ -43,11 +45,16 @@ class Deck {
       image.src = this.cards[i].fileName;
       image.style.height = '120px'
       image.style.width = '100px'
-      console.log(image);
-      $('.deck').append(image);
+      $('.deal').one('click', () => {
+        deck.createDeck()
+        deck.shuffleCards()
+        //$('.deck').append(image);
+
+      })
     }
   }
 }
+
 
 
 //Card Class
@@ -58,9 +65,48 @@ class Card {
     this.value = value
     this.suit = suit
     this.fileName = fileName
-    //this.fileName = fileName
   }
 }
+
+
+class Player {
+  constructor(hand) {
+    this.hand = hand
+  }
+}
+
+
+class Dealer {
+  constructor(hand) {
+    this.hand = hand
+  }
+}
+
+class Hand {
+  constructor(cards)
+}
+
+class Game {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Call new deck and create the cards
@@ -68,6 +114,7 @@ let deck = new Deck()
 deck.createDeck()
 deck.shuffleCards()
 deck.imgElement()
+
 
 //Log cards to console
 console.log(deck.cards)
