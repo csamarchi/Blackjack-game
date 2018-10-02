@@ -70,42 +70,32 @@ class Card {
 
 
 class Player {
-  constructor(hand) {
-    this.hand = hand
+  constructor() {
+    this.hand = new hand()
   }
 }
 
 
 class Dealer {
-  constructor(hand) {
-    this.hand = hand
+  constructor() {
+    this.hand = new hand()
   }
 }
 
 class Hand {
-  constructor(cards)
+  constructor() {
+    this.cards = []
+  }
 }
 
 class Game {
+  constructor() {
+    this.player = new Player()
+    this.dealer = new Dealer()
+    this.deck = new Deck()
+  }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -114,6 +104,10 @@ let deck = new Deck()
 deck.createDeck()
 deck.shuffleCards()
 deck.imgElement()
+
+//Call new game 
+let game = new Game()
+game.startGame()
 
 
 //Log cards to console
