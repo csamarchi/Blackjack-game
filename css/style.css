@@ -24,14 +24,24 @@ body {
 }
 
 .container {
-  position: relative;
-  left: 0px;
-  right: 0px;
-  bottom: -20px;
-  padding-bottom: 70px;
-  padding-top: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 15px;
   text-align: center;
 }
+
+
+
+/* position: relative;
+left: 0px;
+right: 0px;
+bottom: -20px;
+padding-bottom: 70px;
+padding-top: 0;
+text-align: center; */
+
 
 .btn {
   font-family: "Georgia", sans-serif;
@@ -40,7 +50,7 @@ body {
   padding: 10px 20px;
   margin: 2px;
   position: relative;
-  bottom: -50px;
+  bottom: 15px;
   background-color: grey;
   border-radius: 6px;
   border-color: black;

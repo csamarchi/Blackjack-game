@@ -68,26 +68,40 @@ class Card {
   }
 }
 
-
+//Player Class
 class Player {
   constructor() {
-    this.hand = new hand()
+    this.hand = new Hand()
+  }
+
+  addCardToHand(card) {
+    this.cards.push(card)
   }
 }
 
-
+//Dealer Class
 class Dealer {
   constructor() {
-    this.hand = new hand()
+    this.hand = new Hand()
+  }
+
+  addCardToHand(card) {
+    this.cards.push(card)
   }
 }
 
+//Hand Class
 class Hand {
   constructor() {
     this.cards = []
   }
+
+  addCardToHand(card) {
+    this.cards.push(card)
+  }
 }
 
+//Game Class
 class Game {
   constructor() {
     this.player = new Player()
@@ -95,7 +109,28 @@ class Game {
     this.deck = new Deck()
   }
 
+  startGame() {
+    createAndShuffleDeck()
+    dealCards()
+  }
+
+  createAndShuffleDeck() {
+    this.deck.createDeck()
+    this.deck.shuffleCards()
+  }
+
+  dealCards() {
+    let cards = this.deck.cards
+    cards.pop(card1)
+    console.log(cards);
+    cards.pop(card2)
+    this.player.addCardToHand(card1)
+    this.dealer.addCardToHand(card2)
+  }
 }
+
+
+
 
 
 
@@ -105,7 +140,7 @@ deck.createDeck()
 deck.shuffleCards()
 deck.imgElement()
 
-//Call new game 
+//Call new game
 let game = new Game()
 game.startGame()
 
