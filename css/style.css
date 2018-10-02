@@ -14,6 +14,19 @@ body {
   margin: 0px;
 }
 
+.dealer {
+  position: fixed;
+  left: 50%;
+}
+
+.player {
+  position: fixed;
+  left: 50%;
+  bottom: 30%;
+}
+
+
+
 .wood {
   position: absolute;
   bottom: 0%;

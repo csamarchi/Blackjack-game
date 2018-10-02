@@ -45,12 +45,8 @@ class Deck {
       image.src = this.cards[i].fileName;
       image.style.height = '120px'
       image.style.width = '100px'
-      $('.deal').one('click', () => {
-        deck.createDeck()
-        deck.shuffleCards()
-        //$('.deck').append(image);
+      $('.player').append(image);
 
-      })
     }
   }
 }
@@ -109,17 +105,24 @@ class Game {
     this.player = new Player()
     this.dealer = new Dealer()
     this.deck = new Deck()
+    this.suits = ['spades', 'hearts', 'clubs', 'diamonds'];
+    this.values = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
+    this.cards = []
   }
 
   startGame() {
     this.createAndShuffleDeck()
     this.dealCards()
+    this.playerImgElement()
+    this.dealerImgElement()
   }
 
   createAndShuffleDeck() {
     this.deck.createDeck()
     this.deck.shuffleCards()
+
   }
+
 
   dealCards() {
     let cards = this.deck.cards
@@ -131,25 +134,51 @@ class Game {
     }
     console.log(this.player.hand.cards);
     console.log(this.dealer.hand.cards);
-    console.log(this.deck.cards);
     console.log(cards);
   }
+
+  playerImgElement() {
+    for (let i = 0; i < this.player.hand.cards.length; i++) {
+        let image = document.createElement('img')
+        let fileName = 'css/cards/' + this.values[i] + '-' + this.suits[i] + '.jpg';
+        image.src = this.player.hand.cards[i].fileName
+        image.style.height = '120px'
+        image.style.width = '100px'
+        $('.player').append(image);
+    }
+  }
+
+  dealerImgElement() {
+    for (let i = 0; i < this.dealer.hand.cards.length; i++) {
+      let image2 = document.createElement('img');
+      let fileName = 'css/cards/' + this.values[i] + '-' + this.suits[i] + '.jpg';
+      image2.src = this.dealer.hand.cards[i].fileName
+      image2.style.height = '120px'
+      image2.style.width = '100px'
+      $('.dealer').append(image2);
+    }
+  }
+
 }
 
 
 
 
+
 //Call new deck and create the cards
-let deck = new Deck()
-deck.createDeck()
-deck.shuffleCards()
-deck.imgElement()
+// let deck = new Deck()
+// deck.createDeck()
+// deck.shuffleCards()
+// deck.imgElement()
 
 
 
 //Call new game
 let game = new Game()
-game.startGame()
+$('.deal').one('click', () => {
+  game.startGame()
+
+})
 
 
 //Log cards to console
