@@ -105,9 +105,6 @@ class Game {
     this.player = new Player()
     this.dealer = new Dealer()
     this.deck = new Deck()
-    this.suits = ['spades', 'hearts', 'clubs', 'diamonds'];
-    this.values = ['ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'];
-    this.cards = []
   }
 
   startGame() {
@@ -120,7 +117,6 @@ class Game {
   createAndShuffleDeck() {
     this.deck.createDeck()
     this.deck.shuffleCards()
-
   }
 
 
@@ -137,13 +133,26 @@ class Game {
     console.log(cards);
   }
 
+  // this.sumCards = function(cards) {
+  //   let sum = 0;
+  //
+  // }
+
+  hit() {
+    if (dealCards() === true) {
+      let card3 = this.deck.cards.pop()
+      this.player.addCardToHand(card3)
+      console.log(this.player.hand.cards);
+    }
+}
+
   playerImgElement() {
     for (let i = 0; i < this.player.hand.cards.length; i++) {
         let image = document.createElement('img')
-        let fileName = 'css/cards/' + this.values[i] + '-' + this.suits[i] + '.jpg';
         image.src = this.player.hand.cards[i].fileName
-        image.style.height = '120px'
-        image.style.width = '100px'
+        image.style.height = '180px'
+        image.style.width = '160px'
+        image.style.padding = '10px'
         $('.player').append(image);
     }
   }
@@ -151,35 +160,56 @@ class Game {
   dealerImgElement() {
     for (let i = 0; i < this.dealer.hand.cards.length; i++) {
       let image2 = document.createElement('img');
-      let fileName = 'css/cards/' + this.values[i] + '-' + this.suits[i] + '.jpg';
       image2.src = this.dealer.hand.cards[i].fileName
-      image2.style.height = '120px'
-      image2.style.width = '100px'
+      image2.style.height = '180px'
+      image2.style.width = '160px'
+      image2.style.padding = '10px'
       $('.dealer').append(image2);
     }
   }
-
 }
 
 
 
 
 
-//Call new deck and create the cards
-// let deck = new Deck()
-// deck.createDeck()
-// deck.shuffleCards()
-// deck.imgElement()
 
 
 
-//Call new game
+
+
+
+
+
+//
+// $('.blue-pokerchip').on('click', () =>{
+//
+// })
+//
+// function increasePot() {
+//
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+///////Start Game////////
+
 let game = new Game()
 $('.deal').one('click', () => {
   game.startGame()
-
+})
+game.hit()
+$('.hit').one('click', () => {
+  game.hit()
 })
 
-
-//Log cards to console
-//console.log(deck.cards)
+///////Start Game////////
