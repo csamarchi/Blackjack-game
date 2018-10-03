@@ -217,7 +217,7 @@ class Game {
   }
 
   compareScores() {
-    if (this.player.score < (this.dealer.score && this.dealer.score < 21)) {
+    if (this.player.score < this.dealer.score && this.dealer.score <= 21) {
       alert("Dealer Won");
       console.log('dealer won');
       bets.loser();
@@ -309,12 +309,14 @@ Bets.prototype.blackJackWinner = function() {
     this.disableDeal();
 };
 
+
 function notEnoughChips(){
-    swal({
-      title: "Insufficient Chips!",
-      text: "You don't have enough chips for that.",
-      imageUrl: "img/chip-2.png"
-    });
+  alert('You dont have enonguh chips for that.')
+    // swal({
+    //   title: "Insufficient Chips!",
+    //   text: "You don't have enough chips for that.",
+    //   imageUrl: "img/chip-2.png"
+    // });
 }
 
 $('#fifteen').click(function() {bets.addBet(15);});
