@@ -19,14 +19,14 @@ body {
 .dealer {
   text-align: left;
   position: fixed;
-  left: 35%;
-  bottom: 55%;
+  left: 20%;
+  bottom: 60%;
 }
 
 .player {
   text-align: left;
   position: fixed;
-  left: 35%;
+  left: 20%;
   bottom: 15%;
 }
 
@@ -229,7 +229,7 @@ text-align: center; */
 .blue-pokerchip {
   text-align: center;
   font-family: "Georgia", sans-serif;
-  color: black;
+  color: white;
   text-shadow: black;
   font-weight: bold;
   position: fixed;

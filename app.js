@@ -137,7 +137,7 @@ class Game {
 
   convertValue(value) {
     if (value == "jack" || value == "queen" || value == "king") {
-      return 10.0
+      return 10
     } else if (value != "ace") {
       return parseInt(value)
     }
@@ -153,13 +153,13 @@ class Game {
 
   }
 
-  // hit() {
-  //   if (dealCards() === true) {
-  //     let card3 = this.deck.cards.pop()
-  //     this.player.addCardToHand(card3)
-  //     console.log(this.player.hand.cards);
-  //   }
-  // }
+  playerHit() {
+      let card = this.deck.cards.pop()
+      this.player.addCardToHand(card)
+      $('.player').empty();
+      this.playerImgElement()
+      console.log(this.player.hand.cards);
+  }
 
   playerImgElement() {
     for (let i = 0; i < this.player.hand.cards.length; i++) {
@@ -222,9 +222,8 @@ let game = new Game()
 $('.deal').one('click', () => {
   game.startGame()
 })
-// game.hit()
-// $('.hit').one('click', () => {
-//   game.hit()
-// })
+$('.hit').on('click', () => {
+  game.playerHit()
+})
 
 ///////Start Game////////
