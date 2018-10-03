@@ -105,13 +105,13 @@ class Game {
     this.player = new Player()
     this.dealer = new Dealer()
     this.deck = new Deck()
+    this.gameIsStillBeingPlayed = true;
   }
 
   startGame() {
     this.createAndShuffleDeck()
     this.dealCards()
-    this.calculateScore(this.player)
-    this.calculateScore(this.dealer)
+
     this.playerImgElement()
     this.dealerImgElement()
   }
@@ -138,63 +138,108 @@ class Game {
   convertValue(value) {
     if (value == "jack" || value == "queen" || value == "king") {
       return 10
-    } else if (value != "ace") {
+    } else if (value == "ace") {
+      return 11
+    } else {
       return parseInt(value)
     }
   }
 
-  calculateScore(player) {
+  sumCards(player) {
+    let aces = 0;
+    let sum = 0;
     for (let card of player.hand.cards) {
-      player.score += this.convertValue(card.value);
+      let value = this.convertValue(card.value);
+      // player.score += this.convertValue(card.value);
+      if (value === 11) {
+        aces += 1
+        sum += value
+      } else {
+        sum += value
+      }
+    }
+    while (aces > 0 && sum > 21) {
+      aces -= 1
+      sum -= 10
+    }
+    player.score = sum
+  }
+
+  calculateBust(player) {
+    if (player.score > 21) {
+      this.gameIsStillBeingPlayed = false; //game over
+      console.log('BUSTED');
     }
   }
 
-  handleAce() {
-
-  }
 
   playerHit() {
       let card = this.deck.cards.pop()
       this.player.addCardToHand(card)
+
+      //Display
       $('.player').empty();
       this.playerImgElement()
+
+      //Calculation
+      this.sumCards(this.player)
+      this.calculateBust(this.player)
+
+      //debugging
       console.log(this.player.hand.cards);
-  }
+    }
 
-  playerImgElement() {
-    for (let i = 0; i < this.player.hand.cards.length; i++) {
-        let image = document.createElement('img')
-        image.src = this.player.hand.cards[i].fileName
-        image.style.height = '180px'
-        image.style.width = '160px'
-        image.style.padding = '10px'
-        $('.player').append(image);
+  playerStay() {
+    this.sumCards(this.dealer)
+    this.sumCards(this.player)
+
+
+    if (this.dealer.score < 17) {
+      this.dealerHit()
+    } else {
+      this.compareScores()
     }
   }
 
-  dealerImgElement() {
-    for (let i = 0; i < this.dealer.hand.cards.length; i++) {
-      let image2 = document.createElement('img');
-      image2.src = this.dealer.hand.cards[i].fileName
-      image2.style.height = '180px'
-      image2.style.width = '160px'
-      image2.style.padding = '10px'
-      $('.dealer').append(image2);
+  dealerHit() {
+    let card = this.deck.cards.pop()
+    this.dealer.addCardToHand(card)
+
+    //Display
+    $('.dealer').empty();
+    this.dealerImgElement()
+  }
+
+  compareScores() {
+    if (this.player.score > this.dealer.score) {
+      console.log("You Won");
+    } else {
+      console.log("Dealer Won");
     }
+  }
+
+playerImgElement() {
+  for (let i = 0; i < this.player.hand.cards.length; i++) {
+    let image = document.createElement('img')
+    image.src = this.player.hand.cards[i].fileName
+    image.style.height = '180px'
+    image.style.width = '160px'
+    image.style.padding = '10px'
+    $('.player').append(image);
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
+dealerImgElement() {
+  for (let i = 0; i < this.dealer.hand.cards.length; i++) {
+    let image2 = document.createElement('img');
+    image2.src = this.dealer.hand.cards[i].fileName
+    image2.style.height = '180px'
+    image2.style.width = '160px'
+    image2.style.padding = '10px'
+    $('.dealer').append(image2);
+  }
+}
+}
 
 //
 // $('.blue-pokerchip').on('click', () =>{
@@ -207,15 +252,6 @@ class Game {
 
 
 
-
-
-
-
-
-
-
-
-
 ///////Start Game////////
 
 let game = new Game()
@@ -223,7 +259,12 @@ $('.deal').one('click', () => {
   game.startGame()
 })
 $('.hit').on('click', () => {
-  game.playerHit()
+  if (game.gameIsStillBeingPlayed == true) {
+    game.playerHit()
+  }
+})
+$('.stay').on('click', () => {
+  game.playerStay()
 })
 
 ///////Start Game////////
