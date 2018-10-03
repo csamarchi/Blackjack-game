@@ -5,8 +5,6 @@
 //
 //
 
-
-
 //Deck Class
 class Deck {
   //Creates a Deck Object
@@ -70,6 +68,7 @@ class Card {
 class Player {
   constructor() {
     this.hand = new Hand()
+    this.score = 0
   }
 
   addCardToHand(card) {
@@ -81,6 +80,7 @@ class Player {
 class Dealer {
   constructor() {
     this.hand = new Hand()
+    this.score = 0
   }
 
   addCardToHand(card) {
@@ -110,6 +110,8 @@ class Game {
   startGame() {
     this.createAndShuffleDeck()
     this.dealCards()
+    this.calculateScore(this.player)
+    this.calculateScore(this.dealer)
     this.playerImgElement()
     this.dealerImgElement()
   }
@@ -133,18 +135,31 @@ class Game {
     console.log(cards);
   }
 
-  // this.sumCards = function(cards) {
-  //   let sum = 0;
-  //
-  // }
-
-  hit() {
-    if (dealCards() === true) {
-      let card3 = this.deck.cards.pop()
-      this.player.addCardToHand(card3)
-      console.log(this.player.hand.cards);
+  convertValue(value) {
+    if (value == "jack" || value == "queen" || value == "king") {
+      return 10.0
+    } else if (value != "ace") {
+      return parseInt(value)
     }
-}
+  }
+
+  calculateScore(player) {
+    for (let card of player.hand.cards) {
+      player.score += this.convertValue(card.value);
+    }
+  }
+
+  handleAce() {
+
+  }
+
+  // hit() {
+  //   if (dealCards() === true) {
+  //     let card3 = this.deck.cards.pop()
+  //     this.player.addCardToHand(card3)
+  //     console.log(this.player.hand.cards);
+  //   }
+  // }
 
   playerImgElement() {
     for (let i = 0; i < this.player.hand.cards.length; i++) {
@@ -207,9 +222,9 @@ let game = new Game()
 $('.deal').one('click', () => {
   game.startGame()
 })
-game.hit()
-$('.hit').one('click', () => {
-  game.hit()
-})
+// game.hit()
+// $('.hit').one('click', () => {
+//   game.hit()
+// })
 
 ///////Start Game////////
