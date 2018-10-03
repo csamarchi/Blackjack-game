@@ -19,6 +19,8 @@
 
   <div class="container">
     <img src="css/wood-table.jpg" class="wood">
+    <input type="button" class="btn round" value="Next Round"/>
+    <!-- //onClick="window.location.reload()" -->
     <input type="button" class="btn deal" value="Deal"/>
     <input type="button" class="btn hit" value="Hit"/>
     <input type="button" class="btn stay" value="Stay"/>
@@ -33,16 +35,24 @@
 <div class="player">
 </div>
 <!-- </section> -->
-<h3 class="c"> Coins </h3>
 
 
+<div class="betting">
+  <div class="bet-square">
+    <h3 class="b">Bet </h3>
+    <p id="bet"> $0</p>
+  </div>
 
-<section class="chips">
-<div class="bank" value="100"> Wager </div>
+    <div class="pot-square">
+      <div id= "chipText" >Chips</div>
+      <p id="pot">$500</p>
+    </div>
 
-<div type="button" class="blue-pokerchip"> $25 </div>
-<div type="button" class="red-pokerchip"> $5 </div>
-</section>
+    <div class="chips">
+      <div id="fifteen"> $15
+      </div>
+      <div id="fifty"> $50
+      </div>
 
     <script src="app.js"></script>
 </body>

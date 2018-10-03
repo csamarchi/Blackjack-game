@@ -106,9 +106,11 @@ class Game {
     this.dealer = new Dealer()
     this.deck = new Deck()
     this.gameIsStillBeingPlayed = true;
+
   }
 
   startGame() {
+
     this.createAndShuffleDeck()
     this.dealCards()
 
@@ -171,6 +173,7 @@ class Game {
     if (player.score > 21) {
       this.gameIsStillBeingPlayed = false; //game over
       alert('BUSTED');
+      bets.loser();
     }
   }
 
@@ -205,7 +208,7 @@ class Game {
   }
 
   dealerHit() {
-    let card = this.deck.cards.pop()
+    const card = this.deck.cards.pop()
     this.dealer.addCardToHand(card)
 
     //Display
@@ -214,16 +217,20 @@ class Game {
   }
 
   compareScores() {
-    if (this.player.score > this.dealer.score) {
-      alert("You Won");
-    } else {
+    if (this.player.score < (this.dealer.score && this.dealer.score < 21)) {
       alert("Dealer Won");
+      console.log('dealer won');
+      bets.loser();
+    } else {
+      alert("You Won");
+      console.log('you won');
+      bets.blackJackWinner();
     }
   }
 
   playerImgElement() {
     for (let i = 0; i < this.player.hand.cards.length; i++) {
-      let image = document.createElement('img')
+      const image = document.createElement('img')
       image.src = this.player.hand.cards[i].fileName
       image.style.height = '180px'
       image.style.width = '160px'
@@ -244,18 +251,82 @@ class Game {
   }
 }
 
-//
-// $('.blue-pokerchip').on('click', () =>{
-//
-// })
-//
-// function increasePot() {
-//
-// }
+//Bets Functions
+
+let bets = new Bets();
+
+function Bets() {
+    this.pot = 500;
+    this.bet = 0;
+    $('#bet').text(0);
+    $('#pot').text('$' + this.pot);
+}
+
+Bets.prototype.updateAmounts = function () {
+    $('#bet').text('$' + this.bet);
+    $('#pot').text('$' + this.pot);
+};
+Bets.prototype.potAmount = function() {
+    return this.pot;
+};
+Bets.prototype.betAmount = function(){
+    return this.bet;
+};
+Bets.prototype.disableDeal = function () {
+    $('.deal').addClass('disabled');
+};
+Bets.prototype.addBet = function(amount) {
+    if (this.pot >= amount) {
+        this.pot = this.pot - amount;
+        this.bet = this.bet + amount;
+        this.updateAmounts();
+        $('#deal-button').removeClass('disabled');
+    } else {
+        notEnoughChips();
+    }
+};
+Bets.prototype.winner = function() {
+    this.pot += this.bet * 2;
+    this.bet = 0;
+    this.updateAmounts();
+    this.disableDeal();
+};
+Bets.prototype.loser = function() {
+    this.bet = 0;
+    this.updateAmounts();
+    this.disableDeal();
+};
+Bets.prototype.push = function() {
+    this.pot += this.bet;
+    this.bet = 0;
+    this.updateAmounts();
+    this.disableDeal();
+};
+Bets.prototype.blackJackWinner = function() {
+    this.pot += parseInt(this.bet * 2.5);
+    this.bet = 0;
+    this.updateAmounts();
+    this.disableDeal();
+};
+
+function notEnoughChips(){
+    swal({
+      title: "Insufficient Chips!",
+      text: "You don't have enough chips for that.",
+      imageUrl: "img/chip-2.png"
+    });
+}
+
+$('#fifteen').click(function() {bets.addBet(15);});
+$('#fifty').click(function() {bets.addBet(50);});
+if (bets.potAmount() >= bets.betAmount()){
+      $('#doubledown').removeClass('disabled');
+    }
 
 
-
-///////Start Game////////
+//============================
+// Start Program
+//============================
 
 let game = new Game()
 $('.deal').one('click', () => {
@@ -279,4 +350,12 @@ $('.stay').on('click', () => {
   }
 })
 
-///////Start Game////////
+$('.round').on('click', () => {
+  $('.player').empty();
+  $('.dealer').empty();
+  $('.d').find('*').not('.d').empty();
+  game = new Game();
+  game.startGame()
+  $('.player').append('<p>' + game.player.score + '</p>');
+
+})
