@@ -133,6 +133,8 @@ class Game {
     console.log(this.player.hand.cards);
     console.log(this.dealer.hand.cards);
     console.log(cards);
+    this.sumCards(this.dealer)
+    this.sumCards(this.player)
   }
 
   convertValue(value) {
@@ -168,31 +170,32 @@ class Game {
   calculateBust(player) {
     if (player.score > 21) {
       this.gameIsStillBeingPlayed = false; //game over
-      console.log('BUSTED');
+      alert('BUSTED');
     }
   }
 
 
   playerHit() {
-      let card = this.deck.cards.pop()
-      this.player.addCardToHand(card)
+    let card = this.deck.cards.pop()
+    this.player.addCardToHand(card)
 
-      //Display
-      $('.player').empty();
-      this.playerImgElement()
+    //Display
+    $('.player').empty();
+    this.playerImgElement()
 
-      //Calculation
-      this.sumCards(this.player)
-      this.calculateBust(this.player)
+    //Calculation
+    this.sumCards(this.player)
+    this.calculateBust(this.player)
 
-      //debugging
-      console.log(this.player.hand.cards);
-    }
+    //debugging
+    console.log(this.player.hand.cards);
+  }
 
   playerStay() {
     this.sumCards(this.dealer)
     this.sumCards(this.player)
 
+    $('.d').find('*').not('.d').empty();
 
     if (this.dealer.score < 17) {
       this.dealerHit()
@@ -212,33 +215,33 @@ class Game {
 
   compareScores() {
     if (this.player.score > this.dealer.score) {
-      console.log("You Won");
+      alert("You Won");
     } else {
-      console.log("Dealer Won");
+      alert("Dealer Won");
     }
   }
 
-playerImgElement() {
-  for (let i = 0; i < this.player.hand.cards.length; i++) {
-    let image = document.createElement('img')
-    image.src = this.player.hand.cards[i].fileName
-    image.style.height = '180px'
-    image.style.width = '160px'
-    image.style.padding = '10px'
-    $('.player').append(image);
+  playerImgElement() {
+    for (let i = 0; i < this.player.hand.cards.length; i++) {
+      let image = document.createElement('img')
+      image.src = this.player.hand.cards[i].fileName
+      image.style.height = '180px'
+      image.style.width = '160px'
+      image.style.padding = '10px'
+      $('.player').append(image);
+    }
   }
-}
 
-dealerImgElement() {
-  for (let i = 0; i < this.dealer.hand.cards.length; i++) {
-    let image2 = document.createElement('img');
-    image2.src = this.dealer.hand.cards[i].fileName
-    image2.style.height = '180px'
-    image2.style.width = '160px'
-    image2.style.padding = '10px'
-    $('.dealer').append(image2);
+  dealerImgElement() {
+    for (let i = 0; i < this.dealer.hand.cards.length; i++) {
+      let image2 = document.createElement('img');
+      image2.src = this.dealer.hand.cards[i].fileName
+      image2.style.height = '180px'
+      image2.style.width = '160px'
+      image2.style.padding = '10px'
+      $('.dealer').append(image2);
+    }
   }
-}
 }
 
 //
@@ -257,14 +260,23 @@ dealerImgElement() {
 let game = new Game()
 $('.deal').one('click', () => {
   game.startGame()
+  console.log(game.dealer.score);
+  //$('.d').append('<p>' + game.dealer.score + '</p>');
+  $('.player').append('<p>' + game.player.score + '</p>');
 })
 $('.hit').on('click', () => {
   if (game.gameIsStillBeingPlayed == true) {
     game.playerHit()
+    $('.player').append('<p>' + game.player.score + '</p>');
+
   }
 })
 $('.stay').on('click', () => {
-  game.playerStay()
+  if (game.gameIsStillBeingPlayed == true) {
+    game.playerStay()
+    $('.d').append('<h4>' + game.dealer.score + '</h4>');
+    //$('.d').find('.h4').not('.d').empty();
+  }
 })
 
 ///////Start Game////////
