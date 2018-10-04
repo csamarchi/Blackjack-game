@@ -8,6 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body>
@@ -20,41 +22,40 @@
   <div class="container">
     <img src="css/wood-table.jpg" class="wood">
     <input type="button" class="btn round" value="Next Round"/>
-    <!-- //onClick="window.location.reload()" -->
     <input type="button" class="btn deal" value="Deal"/>
     <input type="button" class="btn hit" value="Hit"/>
     <input type="button" class="btn stay" value="Stay"/>
     </div>
 
-<!-- <section> -->
-<h3 class="d"> Dealer's Hand </h3>
-<div class="dealer">
-</div>
-
-<h3 class="p"> Player's Hand </h3>
-<div class="player">
-</div>
-<!-- </section> -->
-
-
-<div class="betting">
-  <div class="bet-square">
-    <h3 class="b">Bet </h3>
-    <p id="bet"> $0</p>
-  </div>
-
-    <div class="pot-square">
-      <div id= "chipText" >Chips</div>
-      <p id="pot">$500</p>
+    <!-- <section> -->
+    <h3 class="d"> Dealer's Hand </h3>
+    <div class="dealer">
     </div>
 
-    <div class="chips">
-      <div id="fifteen"> $15
-      </div>
-      <div id="fifty"> $50
+    <h3 class="p"> Player's Hand </h3>
+    <div class="player">
+    </div>
+    <!-- </section> -->
+
+
+    <div class="betting">
+      <div class="bet-square">
+        <h3 class="b">Bet </h3>
+        <p id="bet"> $0</p>
       </div>
 
-    <script src="app.js"></script>
+      <div class="pot-square">
+        <div id="chipText">Chips</div>
+        <p id="pot">$500</p>
+      </div>
+
+      <div class="chips">
+        <div id="fifteen"> $15
+        </div>
+        <div id="fifty"> $50
+        </div>
+
+        <script src="app.js"></script>
+
 </body>
-
 </html>

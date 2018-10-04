@@ -11,6 +11,44 @@ h1 {
   font-family: "Georgia", sans-serif;
 }
 
+#directions {
+  position: justify;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+
+}
+
+.instructions {
+  font-size: 3em;
+}
+
+ol {
+  text-align: center;
+  text-shadow: 2px 2px black;
+  color: gold;
+  font-family: "Georgia", sans-serif;
+}
+
+li {
+  float: left;
+  list-style: none;
+  text-align: left;
+  color: gold;
+  text-shadow: 2px 2px black;
+  text-align: center;
+  font-family: "Georgia", sans-serif;
+}
+
+.objective {
+  text-align: center;
+  text-shadow: 1px 2px black;
+  color: gold;
+  font-family: "Georgia", sans-serif;
+}
+
+
 body {
   padding: 20px 20px;
   margin: 0px;
@@ -24,7 +62,6 @@ p {
   position: fixed;
   left: 55px;
   bottom: 200px;
-  /* text-shadow: 3px 3px black; */
 }
 
 h4 {
@@ -35,7 +72,6 @@ h4 {
   position: fixed;
   left: 55px;
   bottom: 460px;
-  /* text-shadow: 3px 3px black; */
 }
 
 .dealer {
@@ -89,6 +125,42 @@ h4 {
   text-align: center;
 }
 
+.skip {
+  text-align: center;
+  font-size: 1em;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffee66;
+  width: 15%;
+  height: 30px;
+  border-radius: 20px;
+  position: fixed;
+  margin: auto;
+  left: 40%;
+  bottom: 40%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+  background: -moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+  background: -webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+  background: -o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+  background: -ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+  background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+  -moz-box-shadow: 0px 1px 0px 0px #fff6af;
+  -webkit-box-shadow: 0px 1px 0px 0px #fff6af;
+  background-color: gold;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.skip:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+  background: -moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background: -webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background: -o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background: -ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+  background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64', GradientType=0);
+  background-color: #ffab23;
+  cursor: pointer;
+}
 
 .btn {
   font-family: "Georgia", sans-serif;
@@ -167,6 +239,7 @@ h4 {
   */ */ */
 }
 
+
 .letsPlay:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
   background: -moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
@@ -179,7 +252,7 @@ h4 {
   cursor: pointer;
 }
 
-
+/* Chips Buttons */
 
 .chips {
   position: fixed;
