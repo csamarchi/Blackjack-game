@@ -1,6 +1,8 @@
 # Blackjack-game
 
-User Stories
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+## User Stories
 
 User will open game in the browser where they will be greeted with the main Title page "Jackblack Blackjack". 
 User will click "Let's Play" where they will be directed to the Instructions page. User should read instructions and when they
@@ -13,20 +15,35 @@ they will hit stay and the dealers hand will play out. User will have to click s
 Finally, the scores will be compared and a winner will be declared. The money will be distribuetd and the user should click
 the "next round" button to keep playing. 
 
-User Story #1
+## User Story Examples
 
-45 year old Male looking to practice his Blackjack skills before a big trip to Vegas. 
+* 45 year old Male looking to practice his Blackjack skills before a big trip to Vegas. 
 
-20 year old male or female just learning to play 21.
+* 20 year old male or female just learning to play 21.
 
-Teenager that loves computer games and card games in one.
+* Teenager that loves computer games and card games in one.
 
-60 year old female who just loves to gamble
+* 60 year old female who just loves to gamble
+
+## Deployed App: 
 
 http://chivalrous-mask.surge.sh/
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 ![alt text](mainpage.png)
+
+![alt text](deal_screenshot.png)
 
 ![alt text](wireframe.JPG)
 
 ![alt text](wireframe2.JPG)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+## Technologies
+
+* HTML
+* CSS
+* Javascript
+* Sweetalert for pop up boxes
