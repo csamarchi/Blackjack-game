@@ -35,9 +35,7 @@ http://chivalrous-mask.surge.sh/
 
 ![alt text](deal_screenshot.png)
 
-![alt text](wireframe.JPG)
-
-![alt text](wireframe2.JPG)
+![alt text](wireframe.JPG) ![alt text](wireframe2.JPG)
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
