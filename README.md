@@ -30,10 +30,13 @@ the "next round" button to keep playing.
 http://chivalrous-mask.surge.sh/
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+## Screenshots: 
 
 ![alt text](mainpage.png)
 
 ![alt text](deal_screenshot.png)
+
+## Wireframes: 
 
 ![alt text](wireframe.JPG) ![alt text](wireframe2.JPG)
 
